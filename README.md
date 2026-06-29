@@ -1,31 +1,17 @@
-calculator223/
-│
-├── index.php
-├── api.php
-├── .htaccess
-├── README.md
-│
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── app.js
-│   ├── img/
-│   │   ├── logo.svg
-│   │   └── favicon.svg
-│   └── fonts/
-│
-├── classes/
-│   ├── Calculator.php
-│   ├── Calendar.php
-│   ├── Procurement.php
-│   └── Url.php
-│
-├── config/
-│   ├── procurement.php
-│   ├── calendar2026.php
-│   └── calendar2027.php
-│
-└── templates/
-    ├── header.php
-    └── footer.php
+# Калькулятор сроков по 223-ФЗ
+
+Современный калькулятор сроков проведения закупок по Федеральному закону №223-ФЗ.
+
+## Возможности
+
+- Все способы закупок
+- Расчет сроков
+- Производственный календарь РФ
+- Учет праздничных дней
+- Учет переносов выходных
+- Генерация ссылки
+- Работа в iframe
+- Современный интерфейс
+- PHP + JavaScript
+
+Разработано для сайта 223фз.рф
