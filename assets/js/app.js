@@ -5,47 +5,71 @@ document.addEventListener('DOMContentLoaded', () => {
     const calculate = document.getElementById('calculate');
     const result = document.getElementById('result');
 
-    // Сегодняшняя дата по умолчанию
     publishDate.value = new Date().toISOString().split('T')[0];
 
-    // Пока временный список способов закупки
-    const methods = [
-        'Конкурс',
-        'Аукцион',
-        'Запрос котировок',
-        'Запрос предложений',
-        'Конкурентные переговоры',
-        'Запрос оферт',
-        'Маркетинговое исследование',
-        'Другой'
-    ];
+    loadProcurements();
 
-    procurement.innerHTML = '';
+    async function loadProcurements() {
 
-    methods.forEach(item => {
+        procurement.innerHTML =
+            '<option>Загрузка...</option>';
 
-        const option = document.createElement('option');
+        try {
 
-        option.value = item;
-        option.textContent = item;
+            const response = await fetch(
+                'api.php?action=procurements'
+            );
 
-        procurement.appendChild(option);
+            const json = await response.json();
 
-    });
+            procurement.innerHTML = '';
+
+            json.data.forEach(item => {
+
+                const option =
+                    document.createElement('option');
+
+                option.value = item.id;
+
+                option.textContent = item.name;
+
+                procurement.appendChild(option);
+
+            });
+
+        } catch (e) {
+
+            procurement.innerHTML =
+                '<option>Ошибка загрузки</option>';
+
+            console.error(e);
+
+        }
+
+    }
 
     calculate.addEventListener('click', () => {
 
         result.style.display = 'block';
 
         result.innerHTML = `
+
             <div class="result-card">
 
                 <div class="result-title">
-                    Способ закупки
+
+                    Выбранный способ закупки
+
                 </div>
 
                 <div class="result-date">
-                    ${procurement.value}
+
+                    ${
+                        procurement.options[
+                            procurement.selectedIndex
+                        ].text
+                    }
+
                 </div>
 
             </div>
@@ -53,23 +77,28 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="result-card">
 
                 <div class="result-title">
+
                     Дата публикации
+
                 </div>
 
                 <div class="result-date">
+
                     ${publishDate.value}
+
                 </div>
 
             </div>
 
-            <div class="alert alert-info mt-3">
-                Следующим этапом здесь появится полный расчет сроков по 223-ФЗ.
-            </div>
-        `;
+            <div class="alert alert-success mt-4">
 
-        result.scrollIntoView({
-            behavior: 'smooth'
-        });
+                ✔ PHP API работает.
+
+                Следующий этап — настоящий расчет.
+
+            </div>
+
+        `;
 
     });
 
