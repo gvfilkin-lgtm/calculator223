@@ -1,0 +1,166 @@
+:root{
+
+    --primary:#0B63CE;
+    --primary-hover:#0956B5;
+
+    --background:#F4F7FB;
+
+    --card:#FFFFFF;
+
+    --text:#243042;
+
+    --muted:#7A8798;
+
+    --border:#DCE5F0;
+
+    --radius:18px;
+
+    --shadow:0 12px 40px rgba(30,42,70,.08);
+
+}
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+}
+
+.calculator-card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:40px;
+
+}
+
+.logo{
+
+    max-width:220px;
+
+    height:auto;
+
+}
+
+h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.form-label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.form-control,
+.form-select{
+
+    min-height:52px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    box-shadow:none;
+
+    border-color:var(--primary);
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    border:none;
+
+    min-height:56px;
+
+    border-radius:14px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+}
+
+#result{
+
+    display:none;
+
+}
+
+.result-card{
+
+    border-left:5px solid var(--primary);
+
+    background:#F9FBFF;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+}
+
+.result-title{
+
+    font-size:15px;
+
+    color:var(--muted);
+
+}
+
+.result-date{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-top:6px;
+
+}
+
+@media(max-width:768px){
+
+.calculator-card{
+
+padding:25px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+}
